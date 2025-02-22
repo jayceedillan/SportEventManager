@@ -1,0 +1,12 @@
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\bin\Debug\net8.0\SportEventManager.Domain.deps.json
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\bin\Debug\net8.0\SportEventManager.Domain.dll
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\bin\Debug\net8.0\SportEventManager.Domain.pdb
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.AssemblyInfo.cs
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.dll
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\refint\SportEventManager.Domain.dll
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\SportEventManager.Domain.pdb
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Domain\obj\Debug\net8.0\ref\SportEventManager.Domain.dll
