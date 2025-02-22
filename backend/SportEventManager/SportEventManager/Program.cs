@@ -1,7 +1,11 @@
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportEventManager.Application.Common;
 using SportEventManager.Application.Features.SportCategories.Commands.CreateSportCategory;
+using SportEventManager.Application.Mappings;
 using SportEventManager.Application.Services;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces;
@@ -20,15 +24,13 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("sportEventsDB")));
 
-
-// Register ApplicationDbContext with explicit constructor parameters
-//builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
-//{
-//    var currentUserService = serviceProvider.GetRequiredService<ICurrentUserService>();
-//    var dateTimeService = serviceProvider.GetRequiredService<IDateTime>();
-
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("sportEventsDB"));
-//});
+// 🔥 Register API Versioning
+builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+});
 
 // Register Identity services
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -47,6 +49,16 @@ builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(CreateSportCategoryCommand).Assembly);
 });
+
+// Register AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+// ✅ Register FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssembly(typeof(CreateSportCategoryCommand).Assembly);
+
+// Logging
+builder.Services.AddLogging();
 
 // Configure Authorization Policies
 builder.Services.AddAuthorization(options =>
@@ -78,7 +90,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
 
+app.UseAuthorization();
+
+// ✅ Add FluentValidation Exception Handler
+
+
+app.MapControllers();
 app.Run();

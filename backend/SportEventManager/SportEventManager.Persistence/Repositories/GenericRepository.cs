@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SportEventManager.Domain.Common;
 using SportEventManager.Domain.Interfaces.IRepositories;
+using System.Linq.Expressions;
 
 namespace SportEventManager.Persistence.Repositories
 {
@@ -18,14 +19,22 @@ namespace SportEventManager.Persistence.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<IReadOnlyList<T>> GetAllAsync()
+        public IQueryable<T> GetAllQueryable()
         {
-            return await _context.Set<T>().ToListAsync();
+            return _context.Set<T>().AsQueryable();
         }
 
-        public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        public async Task<IReadOnlyList<T>> GetFilteredAsync(
+            Expression<Func<T, bool>> filter,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy,
+            int pageNumber,
+            int pageSize)
         {
-            return await _context.Set<T>()
+            var query = _context.Set<T>().Where(filter);
+
+            query = orderBy(query); // Apply sorting
+
+            return await query
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
@@ -35,20 +44,20 @@ namespace SportEventManager.Persistence.Repositories
         public async Task<T> AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync(); // Ensure changes are saved
+            await _context.SaveChangesAsync();
             return entity;
         }
 
         public async Task UpdateAsync(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync(); // Ensure changes are saved
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync(); // Ensure changes are saved
+            await _context.SaveChangesAsync();
         }
     }
 }

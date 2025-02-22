@@ -17,3 +17,4 @@ C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persiste
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.pdb
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.genruntimeconfig.cache
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\ref\SportEventManager.Persistence.dll
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.sourcelink.json

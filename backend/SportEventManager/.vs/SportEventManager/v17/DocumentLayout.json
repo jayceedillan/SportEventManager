@@ -3,56 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\features\\sports\\commands\\createsport\\createsportcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\features\\sports\\commands\\createsport\\createsportcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager\\controllers\\sportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|solutionrelative:sporteventmanager\\controllers\\sportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager\\controllers\\sportcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|solutionrelative:sporteventmanager\\controllers\\sportcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F5C6BB7-153A-4FDC-9E0D-0D8793C2572C}|SportEventManager.Persistence\\SportEventManager.Persistence.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.persistence\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F5C6BB7-153A-4FDC-9E0D-0D8793C2572C}|SportEventManager.Persistence\\SportEventManager.Persistence.csproj|solutionrelative:sporteventmanager.persistence\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\features\\sports\\commands\\createsport\\createsportcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\features\\sports\\commands\\createsport\\createsportcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F5C6BB7-153A-4FDC-9E0D-0D8793C2572C}|SportEventManager.Persistence\\SportEventManager.Persistence.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.persistence\\repositories\\sportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F5C6BB7-153A-4FDC-9E0D-0D8793C2572C}|SportEventManager.Persistence\\SportEventManager.Persistence.csproj|solutionrelative:sporteventmanager.persistence\\repositories\\sportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|solutionrelative:sporteventmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager\\controllers\\sportcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|solutionrelative:sporteventmanager\\controllers\\sportcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\features\\sportcategories\\queries\\getallsportcategories\\getallsportcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\features\\sportcategories\\queries\\getallsportcategories\\getallsportcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.domain\\entities\\sport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|solutionrelative:sporteventmanager.domain\\entities\\sport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.domain\\interfaces\\irepositories\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|solutionrelative:sporteventmanager.domain\\interfaces\\irepositories\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\features\\sportcategories\\dtos\\sportcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\features\\sportcategories\\dtos\\sportcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.domain\\entities\\sportcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|solutionrelative:sporteventmanager.domain\\entities\\sportcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F5C6BB7-153A-4FDC-9E0D-0D8793C2572C}|SportEventManager.Persistence\\SportEventManager.Persistence.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.persistence\\repositories\\sportcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F5C6BB7-153A-4FDC-9E0D-0D8793C2572C}|SportEventManager.Persistence\\SportEventManager.Persistence.csproj|solutionrelative:sporteventmanager.persistence\\repositories\\sportcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\mappings\\listtopaginatedresultconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\mappings\\listtopaginatedresultconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.domain\\interfaces\\irepositories\\isportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92FD8226-6DBE-4E23-A82E-254B238F41B5}|SportEventManager.Domain\\SportEventManager.Domain.csproj|solutionrelative:sporteventmanager.domain\\interfaces\\irepositories\\isportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\mappings\\paginatedresultconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\mappings\\paginatedresultconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\features\\sportcategories\\commands\\createsportcategory\\createsportcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\features\\sportcategories\\commands\\createsportcategory\\createsportcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager.application\\features\\sportcategories\\commands\\createsportcategory\\createsportcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64B0D14F-5912-48C6-BE2A-6A4CF612D544}|SportEventManager.Application\\SportEventManager.Application.csproj|solutionrelative:sporteventmanager.application\\features\\sportcategories\\commands\\createsportcategory\\createsportcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|c:\\users\\user\\desktop\\react\\backend\\sporteventmanager\\sporteventmanager\\sporteventmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B72EB76E-CC8F-4318-817D-3C1CC22EE6F6}|SportEventManager\\SportEventManager.csproj|solutionrelative:sporteventmanager\\sporteventmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,175 +54,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SportController.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Controllers\\SportController.cs",
-              "RelativeDocumentMoniker": "SportEventManager\\Controllers\\SportController.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Controllers\\SportController.cs",
-              "RelativeToolTip": "SportEventManager\\Controllers\\SportController.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAAACMAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:36:26.901Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "SportRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\SportRepository.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Persistence\\Repositories\\SportRepository.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\SportRepository.cs",
-              "RelativeToolTip": "SportEventManager.Persistence\\Repositories\\SportRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Interfaces\\IRepositories\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Domain\\Interfaces\\IRepositories\\IGenericRepository.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Interfaces\\IRepositories\\IGenericRepository.cs",
+              "RelativeToolTip": "SportEventManager.Domain\\Interfaces\\IRepositories\\IGenericRepository.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAqwA0AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:32:14.34Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreateSportCommand.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommand.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommand.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommand.cs",
-              "RelativeToolTip": "SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:26:22.376Z",
+              "WhenOpened": "2025-02-22T12:36:54.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "SportCategoriesController.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Controllers\\SportCategoriesController.cs",
-              "RelativeDocumentMoniker": "SportEventManager\\Controllers\\SportCategoriesController.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Controllers\\SportCategoriesController.cs",
-              "RelativeToolTip": "SportEventManager\\Controllers\\SportCategoriesController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAwwCIAAAAJAAAA",
+              "Title": "SportCategoryDto.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\DTOs\\SportCategoryDto.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Application\\Features\\SportCategories\\DTOs\\SportCategoryDto.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\DTOs\\SportCategoryDto.cs",
+              "RelativeToolTip": "SportEventManager.Application\\Features\\SportCategories\\DTOs\\SportCategoryDto.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:38:53.919Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateSportCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommandHandler.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommandHandler.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommandHandler.cs",
-              "RelativeToolTip": "SportEventManager.Application\\Features\\Sports\\Commands\\CreateSport\\CreateSportCommandHandler.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAuwB8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:27:54.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
-              "RelativeToolTip": "SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAuwDYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:41:34.148Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Program.cs",
-              "RelativeDocumentMoniker": "SportEventManager\\Program.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Program.cs",
-              "RelativeToolTip": "SportEventManager\\Program.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAACkAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:39:46.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SportCategoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\SportCategoryRepository.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Persistence\\Repositories\\SportCategoryRepository.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\SportCategoryRepository.cs",
-              "RelativeToolTip": "SportEventManager.Persistence\\Repositories\\SportCategoryRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:31:48.849Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SportCategory.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Entities\\SportCategory.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Domain\\Entities\\SportCategory.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Entities\\SportCategory.cs",
-              "RelativeToolTip": "SportEventManager.Domain\\Entities\\SportCategory.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:38:23.931Z",
+              "WhenOpened": "2025-02-22T12:28:27.308Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Sport.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Entities\\Sport.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Domain\\Entities\\Sport.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Entities\\Sport.cs",
-              "RelativeToolTip": "SportEventManager.Domain\\Entities\\Sport.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
+              "Title": "SportCategory.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Entities\\SportCategory.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Domain\\Entities\\SportCategory.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Entities\\SportCategory.cs",
+              "RelativeToolTip": "SportEventManager.Domain\\Entities\\SportCategory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:27:15.331Z",
+              "WhenOpened": "2025-02-22T12:28:51.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PaginatedResultConverter.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Mappings\\PaginatedResultConverter.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Application\\Mappings\\PaginatedResultConverter.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Mappings\\PaginatedResultConverter.cs",
+              "RelativeToolTip": "SportEventManager.Application\\Mappings\\PaginatedResultConverter.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T12:18:06.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ListToPaginatedResultConverter.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Mappings\\ListToPaginatedResultConverter.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Application\\Mappings\\ListToPaginatedResultConverter.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Mappings\\ListToPaginatedResultConverter.cs",
+              "RelativeToolTip": "SportEventManager.Application\\Mappings\\ListToPaginatedResultConverter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAwAwAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T12:17:24.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Application\\Mappings\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "SportEventManager.Application\\Mappings\\MappingProfile.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAiwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T12:17:18.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SportCategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Controllers\\SportCategoriesController.cs",
+              "RelativeDocumentMoniker": "SportEventManager\\Controllers\\SportCategoriesController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Controllers\\SportCategoriesController.cs",
+              "RelativeToolTip": "SportEventManager\\Controllers\\SportCategoriesController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T12:16:06.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "SportEventManager.Persistence\\Repositories\\GenericRepository.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAqwCAAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T12:16:06.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetAllSportCategoriesQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\Queries\\GetAllSportCategories\\GetAllSportCategoriesQueryHandler.cs",
+              "RelativeDocumentMoniker": "SportEventManager.Application\\Features\\SportCategories\\Queries\\GetAllSportCategories\\GetAllSportCategoriesQueryHandler.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\Queries\\GetAllSportCategories\\GetAllSportCategoriesQueryHandler.cs",
+              "RelativeToolTip": "SportEventManager.Application\\Features\\SportCategories\\Queries\\GetAllSportCategories\\GetAllSportCategoriesQueryHandler.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAiwD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T12:16:06.277Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "ISportRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Interfaces\\IRepositories\\ISportRepository.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Domain\\Interfaces\\IRepositories\\ISportRepository.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Domain\\Interfaces\\IRepositories\\ISportRepository.cs",
-              "RelativeToolTip": "SportEventManager.Domain\\Interfaces\\IRepositories\\ISportRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:32:50.586Z",
+              "Title": "SportEventManager",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\SportEventManager.csproj",
+              "RelativeDocumentMoniker": "SportEventManager\\SportEventManager.csproj",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\SportEventManager.csproj",
+              "RelativeToolTip": "SportEventManager\\SportEventManager.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-22T12:06:32.34Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CreateSportCategoryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommandHandler.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommandHandler.cs",
-              "RelativeToolTip": "SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Program.cs",
+              "RelativeDocumentMoniker": "SportEventManager\\Program.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager\\Program.cs",
+              "RelativeToolTip": "SportEventManager\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:31:32.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CreateSportCategoryCommand.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommand.cs",
-              "RelativeDocumentMoniker": "SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommand.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\React\\backend\\SportEventManager\\SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommand.cs",
-              "RelativeToolTip": "SportEventManager.Application\\Features\\SportCategories\\Commands\\CreateSportCategory\\CreateSportCategoryCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T06:24:30.758Z",
+              "WhenOpened": "2025-02-22T12:05:02.059Z",
               "EditorCaption": ""
             }
           ]

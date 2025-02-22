@@ -5,5 +5,9 @@ namespace SportEventManager.Application.Features.SportCategories.Commands.Delete
     public class DeleteSportCategoryCommand : IRequest
     {
         public int Id { get; set; }
+        public DeleteSportCategoryCommand(int id)  
+        {
+            Id = id;
+        }
     }
 }

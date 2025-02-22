@@ -1,9 +1,25 @@
 ﻿using MediatR;
+using SportEventManager.Application.Common.Models;
+using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Domain.Entities;
 
 namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllSportCategories
 {
-    public class GetAllSportCategoriesQuery : IRequest<IReadOnlyList<SportCategory>>
+    public record GetAllSportCategoriesQuery : IRequest<PaginatedResult<SportCategoryDto>>
     {
+        public string? SearchTerm { get; init; }
+        public int PageNumber { get; init; }
+        public int PageSize { get; init; }
+        public string? SortBy { get; init; }
+        public bool SortDescending { get; init; }
+
+        public GetAllSportCategoriesQuery(SportCategoryFilterDto filter)
+        {
+            SearchTerm = filter.SearchTerm;
+            PageNumber = filter.PageNumber;
+            PageSize = filter.PageSize;
+            SortBy = filter.SortBy;
+            SortDescending = filter.SortDescending;
+        }
     }
 }
