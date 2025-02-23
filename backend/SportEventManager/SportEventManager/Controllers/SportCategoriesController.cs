@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportEventManager.Application.Common.Models;
+using SportEventManager.Application.DTOs;
 using SportEventManager.Application.Features.SportCategories.Commands.CreateSportCategory;
 using SportEventManager.Application.Features.SportCategories.Commands.DeleteSportCategory;
 using SportEventManager.Application.Features.SportCategories.Commands.UpdateSportCategory;
-using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Application.Features.SportCategories.Queries.GetAllSportCategories;
 using SportEventManager.Application.Features.SportCategories.Queries.GetSportCategoryById;
 using System.Net.Mime;

@@ -23,6 +23,9 @@ namespace SportEventManager.Persistence.Configurations
                 .HasForeignKey(e => e.VenueId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.HasIndex(e => e.Title).HasDatabaseName("idx_events_title");
+            builder.HasIndex(e => e.IsDeleted);
+
             builder.HasQueryFilter(e => !e.IsDeleted);
         }
     }

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SportEventManager.Application.Features.SportCategories.DTOs;
+using SportEventManager.Application.DTOs;
 
 namespace SportEventManager.Application.Features.Sports.Commands.CreateSport
 {

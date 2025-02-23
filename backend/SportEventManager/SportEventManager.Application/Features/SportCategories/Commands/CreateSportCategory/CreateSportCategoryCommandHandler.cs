@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using SportEventManager.Application.Features.SportCategories.DTOs;
+using SportEventManager.Application.DTOs;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
 

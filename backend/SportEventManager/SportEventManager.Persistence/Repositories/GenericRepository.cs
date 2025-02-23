@@ -17,7 +17,6 @@ namespace SportEventManager.Persistence.Repositories
         public virtual async Task<T?> GetByIdAsync(int id)
         {
             return await _context.Set<T>()
-               .Where(x => !x.IsDeleted && x.Id == id)
                .FirstOrDefaultAsync();
         }
 

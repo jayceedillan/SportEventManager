@@ -5,6 +5,7 @@ using SportEventManager.Domain.Common;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Exceptions;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Emit;
 
 namespace SportEventManager.Persistence
 {
@@ -36,6 +37,7 @@ namespace SportEventManager.Persistence
         public DbSet<VenueFacility> VenueFacilities { get; set; }
         public DbSet<EventSchedule> EventSchedules { get; set; }
         public DbSet<UserPreference> UserPreferences { get; set; }
+        public DbSet<EducationalLevel> EducationalLevels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -43,13 +45,16 @@ namespace SportEventManager.Persistence
 
             builder.Entity<User>().HasIndex(u => u.Email).HasDatabaseName("idx_users_email");
             builder.Entity<User>().HasIndex(u => u.UserName).HasDatabaseName("idx_users_username");
-            builder.Entity<Sport>().HasIndex(s => s.Name).HasDatabaseName("idx_sports_name");
-            builder.Entity<Event>().HasIndex(e => e.Title).HasDatabaseName("idx_events_title");
-            builder.Entity<SportCategory>().HasIndex(sc => sc.Name).IsUnique();
-            builder.Entity<Sport>().HasIndex(s => s.Name).IsUnique();
-            builder.Entity<Team>().HasIndex(t => t.Name).IsUnique();
-            builder.Entity<Venue>().Property(v => v.Latitude).HasPrecision(9, 6);
-            builder.Entity<Venue>().Property(v => v.Longitude).HasPrecision(9, 6);
+            builder.Entity<User>().HasIndex(u => u.UserName).HasDatabaseName("idx_users_username");
+
+            builder.Entity<EducationalLevel>().HasIndex(t => t.Name).IsUnique();
+            builder.Entity<EducationalLevel>().HasData(
+              new EducationalLevel { Id = 1, Name = "Elementary", CreatedBy = "System", CreatedAt = DateTime.Now.Date, UpdatedBy = "System" },
+              new EducationalLevel { Id = 2, Name = "High School", CreatedBy = "System", CreatedAt = DateTime.Now.Date, UpdatedBy = "System" },
+              new EducationalLevel { Id = 3, Name = "Paralympics", CreatedBy = "System", CreatedAt = DateTime.Now.Date, UpdatedBy = "System" }
+          );
+
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

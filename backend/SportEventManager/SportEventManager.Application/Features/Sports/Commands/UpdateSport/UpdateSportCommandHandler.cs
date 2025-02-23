@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
+using SportEventManager.Application.DTOs;
 using SportEventManager.Application.Exceptions;
-using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
 

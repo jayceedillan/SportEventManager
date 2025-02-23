@@ -42,12 +42,13 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 //builder.Services.AddScoped<ISportCategoryRepository, SportCategoryRepository>();
 //builder.Services.AddScoped<ISportRepository, SportRepository>();
-//builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 builder.Services.AddScoped(provider => new Lazy<UserManager<User>>(() => provider.GetRequiredService<UserManager<User>>()));
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 // Register MediatR
-builder.Services.AddMediatR(cfg => {
+builder.Services.AddMediatR(cfg =>
+{
     cfg.RegisterServicesFromAssembly(typeof(CreateSportCategoryCommand).Assembly);
 });
 
@@ -74,7 +75,11 @@ builder.Services.AddAuthorization(options =>
 });
 
 // Add Controllers
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    });
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateSportCommandValidator>();
 // Add Swagger

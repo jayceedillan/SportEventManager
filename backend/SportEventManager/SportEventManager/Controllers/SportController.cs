@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SportEventManager.Application.Common.Models;
-using SportEventManager.Application.Features.SportCategories.DTOs;
+using SportEventManager.Application.DTOs;
 using SportEventManager.Application.Features.Sports.Commands.CreateSport;
 using SportEventManager.Application.Features.Sports.Commands.DeleteSport;
 using SportEventManager.Application.Features.Sports.Commands.UpdateSport;

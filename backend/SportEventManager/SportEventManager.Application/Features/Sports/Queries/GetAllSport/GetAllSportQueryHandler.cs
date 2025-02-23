@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using SportEventManager.Application.Common.Extensions;
 using SportEventManager.Application.Common.Models;
-using SportEventManager.Application.Features.SportCategories.DTOs;
+using SportEventManager.Application.DTOs;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
 
