@@ -1,15 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SportEventManager.Application.Common;
 using SportEventManager.Domain.Common;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Exceptions;
 using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SportEventManager.Persistence
 {
@@ -72,12 +67,13 @@ namespace SportEventManager.Persistence
                     {
                         case EntityState.Added:
                             entry.Entity.CreatedAt = currentDateTime;
-                            entry.Entity.CreatedBy = userId;
+                            entry.Entity.CreatedBy = "Jessie";
+                            entry.Entity.UpdatedBy = "Jessie";
                             entry.Entity.IsDeleted = false;
                             break;
                         case EntityState.Modified:
                             entry.Entity.UpdatedAt = currentDateTime;
-                            entry.Entity.UpdatedBy = userId;
+                            entry.Entity.UpdatedBy = "Jessie";
                             entry.Property(x => x.CreatedAt).IsModified = false;
                             entry.Property(x => x.CreatedBy).IsModified = false;
                             break;

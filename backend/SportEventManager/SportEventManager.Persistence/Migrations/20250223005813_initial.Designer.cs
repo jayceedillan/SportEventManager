@@ -12,7 +12,7 @@ using SportEventManager.Persistence;
 namespace SportEventManager.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250222051753_initial")]
+    [Migration("20250223005813_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -283,8 +283,7 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId")
-                        .HasDatabaseName("idx_event_schedules");
+                    b.HasIndex("EventId");
 
                     b.HasIndex("VenueId");
 
@@ -341,14 +340,11 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EventId");
+
                     b.HasIndex("SportId");
 
                     b.HasIndex("TeamId");
-
-                    b.HasIndex("EventId", "PlayerId", "SportId")
-                        .HasDatabaseName("idx_player_events");
-
-                    SqlServerIndexBuilderExtensions.IncludeProperties(b.HasIndex("EventId", "PlayerId", "SportId"), new[] { "TeamId", "Status", "PaymentStatus" });
 
                     b.ToTable("Players");
                 });
@@ -443,9 +439,6 @@ namespace SportEventManager.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -457,8 +450,6 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.HasIndex("Name")
                         .IsUnique();
-
-                    b.HasIndex("ParentId");
 
                     b.ToTable("SportCategories");
                 });
@@ -799,8 +790,7 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.HasOne("SportEventManager.Domain.Entities.Venue", "Venue")
                         .WithMany("Events")
-                        .HasForeignKey("VenueId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("VenueId");
 
                     b.Navigation("Organizer");
 
@@ -832,8 +822,7 @@ namespace SportEventManager.Persistence.Migrations
                 {
                     b.HasOne("SportEventManager.Domain.Entities.Event", "Event")
                         .WithMany("Players")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("EventId");
 
                     b.HasOne("SportEventManager.Domain.Entities.Sport", "Sport")
                         .WithMany("Players")
@@ -856,20 +845,9 @@ namespace SportEventManager.Persistence.Migrations
                 {
                     b.HasOne("SportEventManager.Domain.Entities.SportCategory", "Category")
                         .WithMany("Sports")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("SportEventManager.Domain.Entities.SportCategory", b =>
-                {
-                    b.HasOne("SportEventManager.Domain.Entities.SportCategory", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("SportEventManager.Domain.Entities.UserPreference", b =>
@@ -908,8 +886,6 @@ namespace SportEventManager.Persistence.Migrations
 
             modelBuilder.Entity("SportEventManager.Domain.Entities.SportCategory", b =>
                 {
-                    b.Navigation("Children");
-
                     b.Navigation("Sports");
                 });
 

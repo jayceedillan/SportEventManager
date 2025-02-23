@@ -59,7 +59,6 @@ namespace SportEventManager.Persistence.Migrations
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IconUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ParentId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -69,11 +68,6 @@ namespace SportEventManager.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SportCategories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SportCategories_SportCategories_ParentId",
-                        column: x => x.ParentId,
-                        principalTable: "SportCategories",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -279,8 +273,7 @@ namespace SportEventManager.Persistence.Migrations
                         name: "FK_Sports_SportCategories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "SportCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -351,8 +344,7 @@ namespace SportEventManager.Persistence.Migrations
                         name: "FK_Events_Venues_VenueId",
                         column: x => x.VenueId,
                         principalTable: "Venues",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -501,7 +493,7 @@ namespace SportEventManager.Persistence.Migrations
                 column: "VenueId");
 
             migrationBuilder.CreateIndex(
-                name: "idx_event_schedules",
+                name: "IX_EventSchedules_EventId",
                 table: "EventSchedules",
                 column: "EventId");
 
@@ -511,10 +503,9 @@ namespace SportEventManager.Persistence.Migrations
                 column: "VenueId");
 
             migrationBuilder.CreateIndex(
-                name: "idx_player_events",
+                name: "IX_Players_EventId",
                 table: "Players",
-                columns: new[] { "EventId", "PlayerId", "SportId" })
-                .Annotation("SqlServer:Include", new[] { "TeamId", "Status", "PaymentStatus" });
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_SportId",
@@ -531,11 +522,6 @@ namespace SportEventManager.Persistence.Migrations
                 table: "SportCategories",
                 column: "Name",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SportCategories_ParentId",
-                table: "SportCategories",
-                column: "ParentId");
 
             migrationBuilder.CreateIndex(
                 name: "idx_sports_name",

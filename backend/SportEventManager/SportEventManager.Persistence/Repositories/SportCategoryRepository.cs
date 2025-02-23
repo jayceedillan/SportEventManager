@@ -12,17 +12,12 @@ namespace SportEventManager.Persistence.Repositories
 
         public async Task<IEnumerable<SportCategory>> GetCategoriesWithChildren()
         {
-            return await _context.SportCategories
-                .Include(x => x.Children)
-                .Where(x => x.ParentId == null)
-                .ToListAsync();
+            return await _context.SportCategories.ToListAsync();
         }
 
         public async Task<SportCategory> GetCategoryWithParent(int id)
         {
-            return await _context.SportCategories
-                .Include(x => x.Parent)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.SportCategories.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SportEventManager.Application.Common.Models;
+using SportEventManager.Application.Features.SportCategories.Commands.UpdateSportCategory;
 using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Domain.Entities;
 
@@ -13,6 +14,7 @@ namespace SportEventManager.Application.Mappings
             //CreateMap<CreateSportCategoryCommand, SportCategory>();
             CreateMap<List<SportCategoryDto>, PaginatedResult<SportCategoryDto>>()
            .ConvertUsing(new ListToPaginatedResultConverter<SportCategoryDto>());
+            CreateMap<UpdateSportCategoryCommand, SportCategory>().ReverseMap();
         }
     }
 }

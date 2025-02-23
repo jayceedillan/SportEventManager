@@ -8,11 +8,12 @@ using SportEventManager.Application.Features.SportCategories.Commands.CreateSpor
 using SportEventManager.Application.Mappings;
 using SportEventManager.Application.Services;
 using SportEventManager.Domain.Entities;
-using SportEventManager.Domain.Interfaces;
 using SportEventManager.Domain.Interfaces.IRepositories;
 using SportEventManager.Persistence;
 using SportEventManager.Persistence.Identity.Services;
+using SportEventManager.Persistence.Middleware;
 using SportEventManager.Persistence.Repositories;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +39,6 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddDefaultTokenProviders();
 
 // Register repositories and unit of work
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ISportCategoryRepository, SportCategoryRepository>();
 builder.Services.AddScoped<ISportRepository, SportRepository>();
@@ -55,7 +55,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // ✅ Register FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddValidatorsFromAssembly(typeof(CreateSportCategoryCommand).Assembly);
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 // Logging
 builder.Services.AddLogging();
@@ -75,6 +75,7 @@ builder.Services.AddAuthorization(options =>
 // Add Controllers
 builder.Services.AddControllers();
 
+builder.Services.AddValidatorsFromAssemblyContaining<CreateSportCategoryCommandValidator>();
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -87,7 +88,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 

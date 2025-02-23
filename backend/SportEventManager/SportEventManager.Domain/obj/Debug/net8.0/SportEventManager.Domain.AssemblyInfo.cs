@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SportEventManager.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b0097aefde355ce93855b8c2e6b69a6cfff2959")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f04b00c6236f0461f2bf72d232adab00b1085882")]
 [assembly: System.Reflection.AssemblyProductAttribute("SportEventManager.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SportEventManager.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

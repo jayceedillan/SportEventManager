@@ -46,14 +46,14 @@ namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllS
 
                 var mappedCategories = _mapper.Map<List<SportCategoryDto>>(sportCategories);
 
-    
+
                 return new PaginatedResult<SportCategoryDto>(
-                    mappedCategories,              
-                    mappedCategories.Count,          
-                    request.PageNumber,              
-                    request.PageSize                
+                    mappedCategories,
+                    mappedCategories.Count,
+                    request.PageNumber,
+                    request.PageSize
                 );
-               
+
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllS
             }
         }
 
-        
+
     }
 
 }

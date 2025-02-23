@@ -20,15 +20,15 @@ namespace SportEventManager.Application.Features.Sports.Commands.CreateSport
                 Name = request.Name,
                 Description = request.Description,
 
-                Rules= request.Rules,
+                Rules = request.Rules,
                 MinPlayers = request.MinPlayers,
                 MaxPlayers = request.MaxPlayers,
                 CategoryId = request.CategoryId,
                 IsActive = request.IsActive
 
-      
 
-    };
+
+            };
 
             return await _repository.AddAsync(sport);
         }

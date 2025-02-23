@@ -1,38 +1,33 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using SportEventManager.Application.Exceptions;
+using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SportEventManager.Application.Features.SportCategories.Commands.UpdateSportCategory
 {
-    public class UpdateSportCategoryCommandHandler : IRequestHandler<UpdateSportCategoryCommand, SportCategory>
+    public class UpdateSportCategoryCommandHandler : IRequestHandler<UpdateSportCategoryCommand, SportCategoryDto>
     {
         private readonly IGenericRepository<SportCategory> _repository;
+        private readonly IMapper _mapper;
 
-        public UpdateSportCategoryCommandHandler(IGenericRepository<SportCategory> repository)
+        public UpdateSportCategoryCommandHandler(IGenericRepository<SportCategory> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
-        public async Task<SportCategory> Handle(UpdateSportCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<SportCategoryDto> Handle(UpdateSportCategoryCommand request, CancellationToken cancellationToken)
         {
-            var sportCategory = await _repository.GetByIdAsync(request.Id);
+            var sportCategory = await _repository.GetByIdAsync(request.Id).ConfigureAwait(false)
+                               ?? throw new NotFoundException(nameof(SportCategory), request.Id);
 
-            if (sportCategory == null)
-                throw new NotFoundException(nameof(SportCategory), request.Id);
+            _mapper.Map(request, sportCategory);
 
-            sportCategory.Name = request.Name;
-            sportCategory.Description = request.Description;
-            sportCategory.IconUrl = request.IconUrl;
-            sportCategory.ParentId = request.ParentId;
+            await _repository.UpdateAsync(sportCategory).ConfigureAwait(false);
 
-            await _repository.UpdateAsync(sportCategory);
-            return sportCategory;
+            return _mapper.Map<SportCategoryDto>(sportCategory);
         }
     }
 }

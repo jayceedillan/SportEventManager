@@ -11,7 +11,7 @@ namespace SportEventManager.Application.Features.SportCategories.Queries.GetSpor
     public class GetSportCategoryByIdQuery : IRequest<SportCategory>
     {
         public int Id { get; set; }
-        public GetSportCategoryByIdQuery(int id) 
+        public GetSportCategoryByIdQuery(int id)
         {
             Id = id;
         }
