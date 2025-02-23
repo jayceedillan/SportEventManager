@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportEventManager.Application.Features.SportCategories.DTOs
+namespace SportEventManager.Application.Common.Models
 {
-    public record SportCategoryFilterDto
+    public record PaginationFilterDto
     {
         public string? SearchTerm { get; init; }
         public int PageNumber { get; init; } = PaginationConstants.DefaultPageNumber;
@@ -15,7 +15,7 @@ namespace SportEventManager.Application.Features.SportCategories.DTOs
         public string? SortBy { get; init; }
         public bool SortDescending { get; init; }
 
-        public SportCategoryFilterDto()
+        public PaginationFilterDto()
         {
             PageNumber = Math.Max(PageNumber, PaginationConstants.DefaultPageNumber);
             PageSize = Math.Min(Math.Max(PageSize, 1), PaginationConstants.MaxPageSize);

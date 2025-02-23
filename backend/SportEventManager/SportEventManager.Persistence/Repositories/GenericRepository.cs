@@ -14,14 +14,16 @@ namespace SportEventManager.Persistence.Repositories
             _context = context;
         }
 
-        public virtual async Task<T> GetByIdAsync(int id)
+        public virtual async Task<T?> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>()
+               .Where(x => !x.IsDeleted && x.Id == id)
+               .FirstOrDefaultAsync();
         }
 
         public IQueryable<T> GetAllQueryable()
         {
-            return _context.Set<T>().AsQueryable();
+            return _context.Set<T>().Where(d => !d.IsDeleted).AsQueryable();
         }
 
         public async Task<IReadOnlyList<T>> GetFilteredAsync(
@@ -30,7 +32,9 @@ namespace SportEventManager.Persistence.Repositories
             int pageNumber,
             int pageSize)
         {
-            var query = _context.Set<T>().Where(filter);
+            var query = _context.Set<T>()
+                .Where(d => !d.IsDeleted)
+                .Where(filter);
 
             query = orderBy(query); // Apply sorting
 
@@ -56,7 +60,12 @@ namespace SportEventManager.Persistence.Repositories
 
         public async Task DeleteAsync(T entity)
         {
-            _context.Set<T>().Remove(entity);
+            var existingEntity = await _context.Set<T>().FindAsync(entity.Id);
+
+            if (existingEntity == null)
+                throw new Exception($"Entity with ID {entity.Id} not found.");
+
+            _context.Set<T>().Remove(existingEntity);
             await _context.SaveChangesAsync();
         }
     }

@@ -4,20 +4,16 @@ namespace SportEventManager.Application.Features.SportCategories.Commands.Create
 {
     public class CreateSportCategoryCommandValidator : AbstractValidator<CreateSportCategoryCommand>
     {
-        public class CreateUserCommandValidator : AbstractValidator<CreateSportCategoryCommand>
+        public CreateSportCategoryCommandValidator()
         {
-            public CreateUserCommandValidator()
-            {
-                RuleFor(x => x.Name)
-                    .NotEmpty().WithMessage("Name is required.")
-                    .MaximumLength(50).WithMessage("Name must be less than 50 characters.");
+            RuleFor(x => x.Name)
+                .NotEmpty().WithMessage("Name is required.")
+                .MaximumLength(50).WithMessage("Name must be less than 50 characters.");
 
-                RuleFor(x => x.Description)
-                    .MaximumLength(250).WithMessage("Name must be less than 250 characters.");
+            RuleFor(x => x.Description)
+                .MaximumLength(250).WithMessage("Name must be less than 250 characters.");
 
 
-            }
         }
-
     }
 }

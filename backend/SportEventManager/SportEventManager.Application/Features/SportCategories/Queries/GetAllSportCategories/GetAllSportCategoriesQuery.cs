@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using SportEventManager.Application.Common.Models;
 using SportEventManager.Application.Features.SportCategories.DTOs;
-using SportEventManager.Domain.Entities;
 
 namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllSportCategories
 {
@@ -13,7 +12,7 @@ namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllS
         public string? SortBy { get; init; }
         public bool SortDescending { get; init; }
 
-        public GetAllSportCategoriesQuery(SportCategoryFilterDto filter)
+        public GetAllSportCategoriesQuery(PaginationFilterDto filter)
         {
             SearchTerm = filter.SearchTerm;
             PageNumber = filter.PageNumber;

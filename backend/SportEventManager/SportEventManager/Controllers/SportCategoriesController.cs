@@ -44,7 +44,7 @@ namespace SportEventManager.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAll(
-            [FromQuery] SportCategoryFilterDto filter,
+            [FromQuery] PaginationFilterDto filter,
             CancellationToken cancellationToken)
         {
             _logger.LogInformation("Retrieving sport categories with filter: {@Filter}", filter);
@@ -149,7 +149,7 @@ namespace SportEventManager.Controllers
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>No content</returns>
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]

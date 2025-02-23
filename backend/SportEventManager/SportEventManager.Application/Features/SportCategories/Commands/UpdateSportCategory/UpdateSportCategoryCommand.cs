@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using SportEventManager.Application.Features.SportCategories.DTOs;
-using SportEventManager.Domain.Entities;
 
 namespace SportEventManager.Application.Features.SportCategories.Commands.UpdateSportCategory
 {

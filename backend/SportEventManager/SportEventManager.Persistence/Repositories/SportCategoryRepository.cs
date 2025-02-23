@@ -15,7 +15,7 @@ namespace SportEventManager.Persistence.Repositories
             return await _context.SportCategories.ToListAsync();
         }
 
-        public async Task<SportCategory> GetCategoryWithParent(int id)
+        public async Task<SportCategory?> GetCategoryWithParent(int id)
         {
             return await _context.SportCategories.FirstOrDefaultAsync(x => x.Id == id);
         }

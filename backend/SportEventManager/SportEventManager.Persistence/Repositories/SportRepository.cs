@@ -15,7 +15,7 @@ namespace SportEventManager.Persistence.Repositories
             return await _context.Sports.ToListAsync();
         }
 
-        public async Task<Sport> GetSport(int id)
+        public async Task<Sport?> GetSport(int id)
         {
             return await _context.Sports.FirstOrDefaultAsync(x => x.Id == id);
         }

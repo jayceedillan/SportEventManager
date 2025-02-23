@@ -75,7 +75,7 @@ builder.Services.AddAuthorization(options =>
 // Add Controllers
 builder.Services.AddControllers();
 
-builder.Services.AddValidatorsFromAssemblyContaining<CreateSportCategoryCommandValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateSportCommandValidator>();
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

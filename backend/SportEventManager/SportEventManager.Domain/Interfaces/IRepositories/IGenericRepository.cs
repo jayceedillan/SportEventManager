@@ -5,7 +5,7 @@ namespace SportEventManager.Domain.Interfaces.IRepositories
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
-        Task<T> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(int id);
         IQueryable<T> GetAllQueryable(); 
         Task<IReadOnlyList<T>> GetFilteredAsync(
             Expression<Func<T, bool>> filter,

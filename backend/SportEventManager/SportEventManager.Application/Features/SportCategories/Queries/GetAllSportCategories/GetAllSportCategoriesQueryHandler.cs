@@ -1,15 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SportEventManager.Application.Common.Extensions;
 using SportEventManager.Application.Common.Models;
 using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllSportCategories
 {
-    public class GetAllSportCategoriesQueryHandler
-       : IRequestHandler<GetAllSportCategoriesQuery, PaginatedResult<SportCategoryDto>>
+    public class GetAllSportCategoriesQueryHandler : IRequestHandler<GetAllSportCategoriesQuery, PaginatedResult<SportCategoryDto>>
     {
         private readonly IGenericRepository<SportCategory> _repository;
         private readonly IMapper _mapper;
@@ -25,44 +28,42 @@ namespace SportEventManager.Application.Features.SportCategories.Queries.GetAllS
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<PaginatedResult<SportCategoryDto>> Handle(
-            GetAllSportCategoriesQuery request,
-            CancellationToken cancellationToken)
+        public async Task<PaginatedResult<SportCategoryDto>> Handle(GetAllSportCategoriesQuery request, CancellationToken cancellationToken)
         {
             try
             {
-                _logger.LogInformation("Getting all sport categories with filter: {@Request}", request);
+                _logger.LogInformation("Fetching sports data with filter: {@Request}", request);
 
-                var sportCategories = await _repository.GetFilteredAsync(
-                        x => string.IsNullOrWhiteSpace(request.SearchTerm) ||
-                             x.Name.ToLower().Contains(request.SearchTerm.ToLower()) ||
-                             (x.Description != null && x.Description.ToLower().Contains(request.SearchTerm.ToLower())),
-                        query => request.SortDescending
-                            ? query.OrderByDescending(x => x.Name)
-                            : query.OrderBy(x => x.Name),
-                        request.PageNumber,
-                        request.PageSize
+                var query = _repository.GetAllQueryable()
+                    .ApplyDynamicFiltering(
+                        request.SearchTerm,
+                        new[] { "Name", "Description" }
+                    )
+                    .ApplyDynamicSorting(
+                        request.SortBy ?? "Name",
+                        request.SortDescending
                     );
 
-                var mappedCategories = _mapper.Map<List<SportCategoryDto>>(sportCategories);
-
-
-                return new PaginatedResult<SportCategoryDto>(
-                    mappedCategories,
-                    mappedCategories.Count,
+                var result = await query.ToPaginatedListAsync(
                     request.PageNumber,
-                    request.PageSize
+                    request.PageSize,
+                    cancellationToken
                 );
 
+                var mappedData = _mapper.Map<List<SportCategoryDto>>(result.Items);
+
+                return new PaginatedResult<SportCategoryDto>(
+                    mappedData,
+                    result.PageNumber,
+                    result.PageSize,
+                    result.TotalCount
+                );
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error getting sport categories");
+                _logger.LogError(ex, "Error fetching sports data");
                 throw;
             }
         }
-
-
     }
-
 }

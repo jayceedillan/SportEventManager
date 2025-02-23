@@ -1,59 +1,151 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SportEventManager.Application.Common.Models;
+using SportEventManager.Application.Features.SportCategories.DTOs;
 using SportEventManager.Application.Features.Sports.Commands.CreateSport;
-using SportEventManager.Domain.Entities;
+using SportEventManager.Application.Features.Sports.Commands.DeleteSport;
+using SportEventManager.Application.Features.Sports.Commands.UpdateSport;
+using SportEventManager.Application.Features.Sports.Queries.GetAllSport;
+using SportEventManager.Application.Features.Sports.Queries.GetSportById;
+using System.Net.Mime;
 
 namespace SportEventManager.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/sport")]
+    [Produces(MediaTypeNames.Application.Json)]
+    [Consumes(MediaTypeNames.Application.Json)]
     public class SportController : ControllerBase
     {
+        
         private readonly IMediator _mediator;
+        private readonly ILogger<SportController> _logger;
 
-        public SportController(IMediator mediator)
+        public SportController(
+            IMediator mediator,
+            ILogger<SportController> logger)
         {
-            _mediator = mediator;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IReadOnlyList<SportCategory>>> GetAll()
-        //{
-        //    var result = await _mediator.Send(new GetAllSportCategoriesQuery());
-        //    return Ok(result);
-        //}
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(typeof(SportDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ResponseCache(Duration = 60)] // Cache for 1 minute
+        public async Task<IActionResult> GetById(
+            [FromRoute] int id,
+            CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Retrieving sport category with ID: {Id}", id);
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<SportCategory>> GetById(int id)
-        //{
-        //    var result = await _mediator.Send(new GetSportCategoryByIdQuery { Id = id });
-        //    return Ok(result);
-        //}
+            var query = new GetSportByIdQuery(id);
+            var result = await _mediator.Send(query, cancellationToken);
+
+            return result is not null
+                ? Ok(result)
+                : NotFound(new ProblemDetails
+                {
+                    Title = "Resource Not Found",
+                    Detail = $"Sport category with ID {id} was not found",
+                    Status = StatusCodes.Status404NotFound
+                });
+        }
 
         [HttpPost]
-        public async Task<ActionResult<Sport>> Create([FromBody] CreateSportCommand command)
+        //[Authorize(Roles = "Admin")]
+        [ProducesResponseType(typeof(SportDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Create(
+            [FromBody] CreateSportCommand command,
+            CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(command);
+            _logger.LogInformation("Creating new sport: {@Command}", command);
 
-            return null;
-            //return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+            var result = await _mediator.Send(command, cancellationToken);
+
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = result.Id, version = "1.0" },
+                result);
         }
 
-        //[HttpPut("{id}")]
-        //public async Task<ActionResult<SportCategory>> Update(int id, [FromBody] UpdateSportCategoryCommand command)
-        //{
-        //    if (id != command.Id)
-        //        return BadRequest();
+        /// <summary>
+        /// Retrieves all sport  with optional filtering and pagination
+        /// </summary>
+        /// <param name="filter">Optional filter parameters</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>List of sport </returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(PaginatedResult<SportDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAll(
+            [FromQuery] PaginationFilterDto filter,
+            CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Retrieving sport with filter: {@Filter}", filter);
 
-        //    var result = await _mediator.Send(command);
-        //    return Ok(result);
-        //}
+            var query = new GetAllSportQuery(filter);
+            var result = await _mediator.Send(query, cancellationToken);
 
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> Delete(int id)
-        //{
-        //    await _mediator.Send(new DeleteSportCategoryCommand { Id = id });
-        //    return NoContent();
-        //}
+            return result.TotalCount > 0 ? Ok(result) : NoContent();
+        }
+
+        /// <summary>
+        /// Deletes a sport category
+        /// </summary>
+        /// <param name="id">The ID of the sport to delete</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>No content</returns>
+        [HttpDelete("{id:int}")]
+        //[Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Delete(
+            [FromRoute] int id,
+            CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Deleting sport category with ID: {Id}", id);
+
+            await _mediator.Send(new DeleteSportCommand(id), cancellationToken);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Updates an existing sport 
+        /// </summary>
+        /// <param name="id">The ID of the sport  to update</param>
+        /// <param name="command">The update command</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>The updated sport </returns>
+        [HttpPut("{id:int}")]
+        //[Authorize(Roles = "Admin")]
+        [ProducesResponseType(typeof(SportDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Update(
+            [FromRoute] int id,
+            [FromBody] UpdateSportCommand command,
+            CancellationToken cancellationToken)
+        {
+            if (id != command.Id)
+            {
+                return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
+                {
+                    { "Id", new[] { "The ID in the route must match the ID in the request body" } }
+                }));
+            }
+
+            _logger.LogInformation("Updating sport with ID {Id}: {@Command}", id, command);
+
+            var result = await _mediator.Send(command, cancellationToken);
+            return Ok(result);
+        }
     }
 }

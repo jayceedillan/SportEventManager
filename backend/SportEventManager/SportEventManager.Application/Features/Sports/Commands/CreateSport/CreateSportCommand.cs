@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using SportEventManager.Domain.Entities;
+using SportEventManager.Application.Features.SportCategories.DTOs;
 
 namespace SportEventManager.Application.Features.Sports.Commands.CreateSport
 {
-    public class CreateSportCommand : IRequest<Sport>
+    public class CreateSportCommand : IRequest<SportDto>
     {
         public string Name { get; set; }
         public string Description { get; set; }
