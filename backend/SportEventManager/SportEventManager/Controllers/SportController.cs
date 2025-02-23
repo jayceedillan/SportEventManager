@@ -49,7 +49,7 @@ namespace SportEventManager.Controllers
                 : NotFound(new ProblemDetails
                 {
                     Title = "Resource Not Found",
-                    Detail = $"Sport category with ID {id} was not found",
+                    Detail = $"Sport with ID {id} was not found",
                     Status = StatusCodes.Status404NotFound
                 });
         }
@@ -96,7 +96,7 @@ namespace SportEventManager.Controllers
         }
 
         /// <summary>
-        /// Deletes a sport category
+        /// Deletes a sport
         /// </summary>
         /// <param name="id">The ID of the sport to delete</param>
         /// <param name="cancellationToken">Cancellation token</param>

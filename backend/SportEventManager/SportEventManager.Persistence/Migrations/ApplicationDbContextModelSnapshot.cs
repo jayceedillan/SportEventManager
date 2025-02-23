@@ -183,15 +183,7 @@ namespace SportEventManager.Persistence.Migrations
                     b.Property<int?>("MaxParticipants")
                         .HasColumnType("int");
 
-                    b.Property<string>("OrganizerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<decimal?>("RegistrationFee")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<int>("SportId")
+                    b.Property<int?>("SportId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
@@ -212,17 +204,20 @@ namespace SportEventManager.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("VenueId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrganizerId");
-
                     b.HasIndex("SportId");
 
                     b.HasIndex("Title")
                         .HasDatabaseName("idx_events_title");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("VenueId");
 
@@ -624,10 +619,6 @@ namespace SportEventManager.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -651,14 +642,6 @@ namespace SportEventManager.Persistence.Migrations
                         .HasColumnType("decimal(9,6)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -773,25 +756,17 @@ namespace SportEventManager.Persistence.Migrations
 
             modelBuilder.Entity("SportEventManager.Domain.Entities.Event", b =>
                 {
-                    b.HasOne("SportEventManager.Domain.Entities.User", "Organizer")
-                        .WithMany("OrganizedEvents")
-                        .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SportEventManager.Domain.Entities.Sport", "Sport")
+                    b.HasOne("SportEventManager.Domain.Entities.Sport", null)
                         .WithMany("Events")
-                        .HasForeignKey("SportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SportId");
+
+                    b.HasOne("SportEventManager.Domain.Entities.User", null)
+                        .WithMany("OrganizedEvents")
+                        .HasForeignKey("UserId");
 
                     b.HasOne("SportEventManager.Domain.Entities.Venue", "Venue")
                         .WithMany("Events")
                         .HasForeignKey("VenueId");
-
-                    b.Navigation("Organizer");
-
-                    b.Navigation("Sport");
 
                     b.Navigation("Venue");
                 });
@@ -818,7 +793,7 @@ namespace SportEventManager.Persistence.Migrations
             modelBuilder.Entity("SportEventManager.Domain.Entities.Player", b =>
                 {
                     b.HasOne("SportEventManager.Domain.Entities.Event", "Event")
-                        .WithMany("Players")
+                        .WithMany()
                         .HasForeignKey("EventId");
 
                     b.HasOne("SportEventManager.Domain.Entities.Sport", "Sport")
@@ -869,8 +844,6 @@ namespace SportEventManager.Persistence.Migrations
 
             modelBuilder.Entity("SportEventManager.Domain.Entities.Event", b =>
                 {
-                    b.Navigation("Players");
-
                     b.Navigation("Schedules");
                 });
 

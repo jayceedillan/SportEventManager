@@ -5,11 +5,11 @@ using SportEventManager.Domain.Interfaces.IRepositories;
 
 namespace SportEventManager.Application.Features.Sports.Queries.GetSportById
 {
-    public class GetSportByIdQueryHandler : IRequestHandler<GetSportByIdQuery, Sport>
+    public class GetEventByIdQueryHandler : IRequestHandler<GetSportByIdQuery, Sport>
     {
         private readonly IGenericRepository<Sport> _repository;
 
-        public GetSportByIdQueryHandler(IGenericRepository<Sport> repository)
+        public GetEventByIdQueryHandler(IGenericRepository<Sport> repository)
         {
             _repository = repository;
         }

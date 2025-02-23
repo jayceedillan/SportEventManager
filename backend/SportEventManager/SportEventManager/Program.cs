@@ -40,8 +40,9 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 // Register repositories and unit of work
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<ISportCategoryRepository, SportCategoryRepository>();
-builder.Services.AddScoped<ISportRepository, SportRepository>();
+//builder.Services.AddScoped<ISportCategoryRepository, SportCategoryRepository>();
+//builder.Services.AddScoped<ISportRepository, SportRepository>();
+//builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped(provider => new Lazy<UserManager<User>>(() => provider.GetRequiredService<UserManager<User>>()));
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 

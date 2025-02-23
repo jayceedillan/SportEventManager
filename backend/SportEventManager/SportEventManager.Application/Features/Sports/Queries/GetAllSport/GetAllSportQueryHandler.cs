@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore; // ✅ Fix for CountAsync
 using Microsoft.Extensions.Logging;
 using SportEventManager.Application.Common.Extensions;
 using SportEventManager.Application.Common.Models;
 using SportEventManager.Application.Features.SportCategories.DTOs;
-using SportEventManager.Application.Features.SportCategories.Queries.GetAllSportCategories;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
-using System.Linq.Expressions;
-using System.Reflection;
 
 namespace SportEventManager.Application.Features.Sports.Queries.GetAllSport
 {

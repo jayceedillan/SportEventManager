@@ -48,8 +48,6 @@ namespace SportEventManager.Persistence
             builder.Entity<SportCategory>().HasIndex(sc => sc.Name).IsUnique();
             builder.Entity<Sport>().HasIndex(s => s.Name).IsUnique();
             builder.Entity<Team>().HasIndex(t => t.Name).IsUnique();
-
-            builder.Entity<Event>().Property(e => e.RegistrationFee).HasPrecision(10, 2);
             builder.Entity<Venue>().Property(v => v.Latitude).HasPrecision(9, 6);
             builder.Entity<Venue>().Property(v => v.Longitude).HasPrecision(9, 6);
         }
