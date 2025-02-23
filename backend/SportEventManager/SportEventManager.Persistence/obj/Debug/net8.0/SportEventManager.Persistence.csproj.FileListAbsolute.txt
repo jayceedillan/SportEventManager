@@ -1,3 +1,9 @@
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.AssemblyInfo.cs
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.sourcelink.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\bin\Debug\net8.0\SportEventManager.Persistence.deps.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\bin\Debug\net8.0\SportEventManager.Persistence.runtimeconfig.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\bin\Debug\net8.0\SportEventManager.Persistence.dll
@@ -6,12 +12,6 @@ C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persiste
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\bin\Debug\net8.0\SportEventManager.Domain.dll
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\bin\Debug\net8.0\SportEventManager.Application.pdb
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\bin\Debug\net8.0\SportEventManager.Domain.pdb
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.csproj.AssemblyReference.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.AssemblyInfoInputs.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.AssemblyInfo.cs
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.sourcelink.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEve.1EF4B3FC.Up2Date
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\SportEventManager.Persistence.dll
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager.Persistence\obj\Debug\net8.0\refint\SportEventManager.Persistence.dll

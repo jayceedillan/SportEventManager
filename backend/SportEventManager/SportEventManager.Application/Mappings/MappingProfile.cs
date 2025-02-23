@@ -7,6 +7,8 @@ using SportEventManager.Application.Features.SportCategories.Commands.CreateSpor
 using SportEventManager.Application.Features.SportCategories.Commands.UpdateSportCategory;
 using SportEventManager.Application.Features.Sports.Commands.CreateSport;
 using SportEventManager.Application.Features.Sports.Commands.UpdateSport;
+using SportEventManager.Application.Features.Teams.Commands.CreateTeam;
+using SportEventManager.Application.Features.Teams.Commands.UpdateTeam;
 using SportEventManager.Application.Features.Venues.Commands.CreateEvent;
 using SportEventManager.Application.Features.Venues.Commands.UpdateEvent;
 using SportEventManager.Domain.Entities;
@@ -32,6 +34,11 @@ namespace SportEventManager.Application.Mappings
             CreateMap<Venue, VenueDto>().ReverseMap();
             CreateMap<CreateVenueCommand, Venue>();
             CreateMap<UpdateVenueCommand, Venue>();
+
+            CreateMap<Team, TeamDto>().ReverseMap();
+            CreateMap<CreateTeamCommand, Team>();
+            CreateMap<UpdateTeamCommand, Team>();
+
         }
     }
 }
