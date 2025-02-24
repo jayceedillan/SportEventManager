@@ -1,10 +1,3 @@
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.csproj.AssemblyReference.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.AssemblyInfoInputs.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.AssemblyInfo.cs
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.sourcelink.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debug\net8.0\appsettings.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debug\net8.0\SportEventManager.exe
@@ -144,7 +137,14 @@ C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debu
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debug\net8.0\SportEventManager.Application.pdb
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debug\net8.0\SportEventManager.Persistence.pdb
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\bin\Debug\net8.0\SportEventManager.Domain.pdb
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.AssemblyInfo.cs
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.csproj.CoreCompileInputs.cache
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\SportEventManager.sourcelink.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\USER\Desktop\React\backend\SportEventManager\SportEventManager\obj\Debug\net8.0\staticwebassets\msbuild.SportEventManager.Microsoft.AspNetCore.StaticWebAssets.props

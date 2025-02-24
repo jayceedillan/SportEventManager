@@ -195,7 +195,7 @@ namespace SportEventManager.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 2, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedAt = new DateTime(2025, 2, 24, 0, 0, 0, 0, DateTimeKind.Local),
                             CreatedBy = "System",
                             IsDeleted = false,
                             Name = "Elementary",
@@ -204,7 +204,7 @@ namespace SportEventManager.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 2, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedAt = new DateTime(2025, 2, 24, 0, 0, 0, 0, DateTimeKind.Local),
                             CreatedBy = "System",
                             IsDeleted = false,
                             Name = "High School",
@@ -213,7 +213,7 @@ namespace SportEventManager.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 2, 23, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedAt = new DateTime(2025, 2, 24, 0, 0, 0, 0, DateTimeKind.Local),
                             CreatedBy = "System",
                             IsDeleted = false,
                             Name = "Paralympics",
@@ -238,7 +238,8 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -257,11 +258,12 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -269,9 +271,6 @@ namespace SportEventManager.Persistence.Migrations
                     b.Property<string>("UpdatedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("VenueId")
                         .HasColumnType("int");
@@ -282,10 +281,12 @@ namespace SportEventManager.Persistence.Migrations
 
                     b.HasIndex("SportId");
 
+                    b.HasIndex("StartDate");
+
+                    b.HasIndex("Status");
+
                     b.HasIndex("Title")
                         .HasDatabaseName("idx_events_title");
-
-                    b.HasIndex("UserId");
 
                     b.HasIndex("VenueId");
 
@@ -870,13 +871,10 @@ namespace SportEventManager.Persistence.Migrations
                         .WithMany("Events")
                         .HasForeignKey("SportId");
 
-                    b.HasOne("SportEventManager.Domain.Entities.User", null)
-                        .WithMany("OrganizedEvents")
-                        .HasForeignKey("UserId");
-
                     b.HasOne("SportEventManager.Domain.Entities.Venue", "Venue")
                         .WithMany("Events")
-                        .HasForeignKey("VenueId");
+                        .HasForeignKey("VenueId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Venue");
                 });
@@ -943,7 +941,7 @@ namespace SportEventManager.Persistence.Migrations
             modelBuilder.Entity("SportEventManager.Domain.Entities.UserPreference", b =>
                 {
                     b.HasOne("SportEventManager.Domain.Entities.User", "User")
-                        .WithMany("Preferences")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -980,13 +978,6 @@ namespace SportEventManager.Persistence.Migrations
             modelBuilder.Entity("SportEventManager.Domain.Entities.Team", b =>
                 {
                     b.Navigation("Players");
-                });
-
-            modelBuilder.Entity("SportEventManager.Domain.Entities.User", b =>
-                {
-                    b.Navigation("OrganizedEvents");
-
-                    b.Navigation("Preferences");
                 });
 
             modelBuilder.Entity("SportEventManager.Domain.Entities.Venue", b =>

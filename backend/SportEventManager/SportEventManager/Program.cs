@@ -10,6 +10,7 @@ using SportEventManager.Application.Services;
 using SportEventManager.Domain.Entities;
 using SportEventManager.Domain.Interfaces.IRepositories;
 using SportEventManager.Persistence;
+using SportEventManager.Persistence.DbContext;
 using SportEventManager.Persistence.Identity.Services;
 using SportEventManager.Persistence.Middleware;
 using SportEventManager.Persistence.Repositories;
@@ -33,18 +34,21 @@ builder.Services.AddApiVersioning(options =>
     options.DefaultApiVersion = new ApiVersion(1, 0);
 });
 
-// Register Identity services
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
-
 // Register repositories and unit of work
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 //builder.Services.AddScoped<ISportCategoryRepository, SportCategoryRepository>();
 //builder.Services.AddScoped<ISportRepository, SportRepository>();
 builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped(provider => new Lazy<UserManager<User>>(() => provider.GetRequiredService<UserManager<User>>()));
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<UserManager<User>>(); 
+builder.Services.AddScoped<SignInManager<User>>();
 
 // Register MediatR
 builder.Services.AddMediatR(cfg =>
@@ -71,7 +75,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireEventOrganizer", policy =>
         policy.RequireAssertion(context =>
             context.User.IsInRole("Admin") ||
-            context.User.IsInRole("EventOrganizer")));
+            context.User.IsInRole("User")));
 });
 
 // Add Controllers
@@ -88,6 +92,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    Console.WriteLine("Seeding roles and admin user...");
+    await SeedData.InitializeAsync(services);
+}
+
 // Configure Middleware
 if (app.Environment.IsDevelopment())
 {
@@ -99,9 +110,5 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
-// ✅ Add FluentValidation Exception Handler
-
-
 app.MapControllers();
 app.Run();

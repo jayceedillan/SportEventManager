@@ -2,7 +2,7 @@
 
 namespace SportEventManager.Domain.Entities
 {
-    public class UserPreference: BaseEntity
+    public class UserPreference : BaseEntity
     {
 
         public string PreferenceKey { get; set; }
