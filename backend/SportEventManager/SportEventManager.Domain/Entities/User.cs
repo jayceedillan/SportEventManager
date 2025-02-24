@@ -3,7 +3,5 @@
 namespace SportEventManager.Domain.Entities
 {
     public class User : IdentityUser 
-    {
-       
-    }
+    {}
 }

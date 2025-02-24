@@ -1,6 +1,4 @@
-﻿
-
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using SportEventManager.Application.Common.Extensions;
@@ -27,45 +25,36 @@ namespace SportEventManager.Application.Features.Users.Queries.GetAllUser
         }
 
         public async Task<PaginatedResult<UserDto>> Handle(
-        GetAllUserQuery request,
-        CancellationToken cancellationToken)
+            GetAllUserQuery request,
+            CancellationToken cancellationToken)
         {
             try
             {
-                _logger.LogInformation("Fetching Users data with filter: {@Request}", request);
+                _logger.LogInformation("Fetching Users data with filter: {SearchTerm}", request.SearchTerm);
 
                 var query = _repository.GetAllUsersQueryable()
-                    .ApplyDynamicFiltering(
-                        request.SearchTerm,
-                        new[] { "UserName", "Email" }
-                    )
-                    .ApplyDynamicSorting(
-                        request.SortBy ?? "Email",
-                        request.SortDescending
-                    );
+                    .ApplyDynamicFiltering(request.SearchTerm, new[] { "UserName", "Email" })
+                    .ApplyDynamicSorting(request.SortBy ?? "Email", request.SortDescending);
 
-                var result = await query.ToPaginatedListAsync(
-                    request.PageNumber,
-                    request.PageSize,
-                    cancellationToken
-                );
+                var result = await query.ToPaginatedListAsync(request.PageNumber, request.PageSize, cancellationToken);
+                var userIds = result.Items.Select(u => u.Id).ToList();
+
+                var userRolesMap = await _repository.GetRolesForUsersAsync(userIds);
 
                 var mappedData = _mapper.Map<List<UserDto>>(result.Items);
 
-                return new PaginatedResult<UserDto>(
-                    mappedData,
-                    result.PageNumber,
-                    result.PageSize,
-                    result.TotalCount
-                );
+                foreach (var user in mappedData)
+                {
+                    user.Roles = userRolesMap.GetValueOrDefault(user.Id, new List<string>());
+                }
+
+                return new PaginatedResult<UserDto>(mappedData, result.PageNumber, result.PageSize, result.TotalCount);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error fetching sports data");
+                _logger.LogError(ex, "Error fetching user data");
                 throw;
             }
         }
-
-       
     }
 }

@@ -8,10 +8,12 @@ namespace SportEventManager.Persistence.Repositories
     public class UserRepository :  IUserRepository
     {
         private readonly UserManager<User> _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public UserRepository(UserManager<User> userManager)
+        public UserRepository(UserManager<User> userManager, ApplicationDbContext context)
         {
             _userManager = userManager;
+            _context = context;
         }
 
         public async Task<User?> CreateUserAsync(User user, string password)
@@ -64,5 +66,18 @@ namespace SportEventManager.Persistence.Repositories
             return _userManager.Users.AsNoTracking();
         }
 
+        public async Task<Dictionary<string, List<string>>> GetRolesForUsersAsync(List<string> userIds)
+        {
+            var userRoles = await _context.UserRoles
+                .Where(ur => userIds.Contains(ur.UserId))
+                .Join(_context.Roles,
+                    ur => ur.RoleId,
+                    r => r.Id,
+                    (ur, r) => new { ur.UserId, RoleName = r.Name })
+                .GroupBy(ur => ur.UserId)
+                .ToDictionaryAsync(g => g.Key, g => g.Select(x => x.RoleName).ToList());
+
+            return userRoles;
+        }
     }
 }

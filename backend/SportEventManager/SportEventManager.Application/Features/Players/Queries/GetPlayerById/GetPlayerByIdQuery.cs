@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using SportEventManager.Domain.Entities;
+using SportEventManager.Application.DTOs;
 
 namespace SportEventManager.Application.Features.Players.Queries.GetPlayerByIdQuery
 {
-    public class GetPlayerByIdQuery : IRequest<Player>
+    public class GetPlayerByIdQuery : IRequest<PlayerDto>
     {
         public int Id { get; set; }
 

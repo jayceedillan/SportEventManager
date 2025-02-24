@@ -1,5 +1,4 @@
 ﻿using SportEventManager.Domain.Entities;
-using System.Linq.Expressions;
 
 namespace SportEventManager.Domain.Interfaces.IRepositories
 {
@@ -13,5 +12,6 @@ namespace SportEventManager.Domain.Interfaces.IRepositories
         Task<List<string>> GetUserRolesAsync(User user);
         Task<bool> AddToRolesAsync(User user, IEnumerable<string> roles);
         IQueryable<User> GetAllUsersQueryable();
+        Task<Dictionary<string, List<string>>> GetRolesForUsersAsync(List<string> userIds);
     }
 }
