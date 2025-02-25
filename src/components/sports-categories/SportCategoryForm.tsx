@@ -1,11 +1,15 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { SportCategory } from "@/types/sportCategory";
 import { sportCategorySchema } from "@/lib/validation";
 import { Input } from "../common/Input";
-
 import { Button } from "../common/Button";
 import { Textarea } from "../common/Textarea";
+
+type SportCategoryFormData = z.infer<typeof sportCategorySchema>;
 
 interface SportCategoryFormProps {
   initialData?: SportCategory;
@@ -18,6 +22,7 @@ export const SportCategoryForm: React.FC<SportCategoryFormProps> = ({
   onSubmit,
   isLoading,
 }) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -34,7 +39,12 @@ export const SportCategoryForm: React.FC<SportCategoryFormProps> = ({
           {initialData ? "Update Sport" : "Create New Sport"}
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form
+          onSubmit={handleSubmit((data) =>
+            onSubmit({ ...data, id: initialData?.id })
+          )}
+          className="space-y-6"
+        >
           <div className="space-y-6">
             <div className="bg-gray-50 p-6 rounded-md">
               <Input
@@ -50,15 +60,16 @@ export const SportCategoryForm: React.FC<SportCategoryFormProps> = ({
               label="Description"
               {...register("description")}
               error={errors.description?.message}
-              className="bg-white min-h-[120px]"
+              className="bg-white min-h-[120px] border"
             />
           </div>
           <div className="pt-4 flex justify-around">
             <Button
-              type="submit"
+              type="button"
               isLoading={isLoading}
-              className=" py-3 text-lg font-semibold shadow-sm bg-blue-500  text-white"
-              variant="primary"
+              onClick={() => router.push("/sports-category")}
+              className=" py-3 text-lg font-semibold shadow-sm bg-gray-500 text-white hover:bg-gray-600"
+              variant="secondary"
             >
               Cancel
             </Button>
@@ -74,7 +85,6 @@ export const SportCategoryForm: React.FC<SportCategoryFormProps> = ({
         </form>
       </div>
 
-      {/* Optional: Add a helper text or additional information */}
       <div className="mt-4 text-center text-sm text-gray-500">
         All fields marked with * are required
       </div>

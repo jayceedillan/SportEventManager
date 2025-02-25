@@ -9,30 +9,41 @@ import { usePagination } from "@/hooks/usePagination";
 import {
   useGetSportCategoryQuery,
   useDeleteSportCategoryMutation,
-  PaginationFilterDto,
+  type PaginationFilterDto,
 } from "@/store/services/sportCategoryApi";
 import { toast } from "react-hot-toast";
+import { ConfirmModal } from "@/components/common/ConfirmModal";
+import { showToast } from "@/utils/toast";
 
 interface SportCategoryFilters {
   searchTerm: string;
   isActive: boolean;
   sortBy?: string;
-  sortDescending: true | false;
+  sortDescending: boolean;
   sortByValue?: "asc" | "desc";
 }
 
+interface ModalState {
+  isOpen: boolean;
+  itemId: number | null;
+}
+
+const initialFilters: SportCategoryFilters = {
+  searchTerm: "",
+  isActive: true,
+  sortDescending: false,
+};
+
 export default function SportsCategoryPage() {
   const router = useRouter();
-  const [filters, setFilters] = useState<SportCategoryFilters>({
-    searchTerm: "",
-    isActive: true,
-    sortDescending: false,
+  const [filters, setFilters] = useState<SportCategoryFilters>(initialFilters);
+  const [modalState, setModalState] = useState<ModalState>({
+    isOpen: false,
+    itemId: null,
   });
 
-  // Initialize pagination with your hook
   const { page, pageSize, setPage, resetPagination } = usePagination();
 
-  // Combine filters and pagination into query parameters
   const queryParams: PaginationFilterDto = {
     page,
     pageSize,
@@ -49,30 +60,57 @@ export default function SportsCategoryPage() {
     resetPagination();
   };
 
-  const handleDelete = async (id: number) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this sport category?"
-    );
+  const handleDelete = (id: number) => {
+    setModalState({ isOpen: true, itemId: id });
+  };
 
-    if (confirmed) {
-      // Show loading state
-      // if (isDeleting) return; // Prevent multiple clicks while deleting
+  const handleConfirm = async () => {
+    if (!modalState.itemId) return;
+
+    const loadingToastId = showToast.loading("Deleting sport category...");
+
+    try {
+      await deleteSportCategory(modalState.itemId).unwrap();
       debugger;
-      await deleteSportCategory(id).unwrap();
-
-      // Optional: Show success message
-      toast.success("Sport category deleted successfully");
-      // Or if you're not using toast library
-      // alert('Sport category deleted successfully');
-
-      // Optionally refresh the data or handle the UI update
-      // If you're using React Query or RTK Query, this might be handled automatically
+      showToast.dismiss(loadingToastId);
+      showToast.success("Sport category deleted successfully");
+    } catch (error) {
+      showToast.dismiss(loadingToastId);
+      showToast.error("Failed to delete sport category");
+      console.error("Delete error:", error);
+    } finally {
+      setModalState({ isOpen: false, itemId: null });
     }
   };
 
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
+  const handleCloseModal = () => {
+    setModalState({ isOpen: false, itemId: null });
   };
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    handleFilterChange({
+      ...filters,
+      sortBy: e.target.value,
+    });
+  };
+
+  const handleSortDirectionChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    handleFilterChange({
+      ...filters,
+      sortDescending: e.target.value !== "asc",
+      sortByValue: e.target.value as "asc" | "desc",
+    });
+  };
+
+  if (error) {
+    return (
+      <div className="text-red-500 p-4 bg-red-50 rounded">
+        Error loading sports. Please try again later.
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 p-8">
@@ -92,38 +130,22 @@ export default function SportsCategoryPage() {
         currentFilters={filters}
       />
 
-      {error && (
-        <div className="text-red-500 p-4 bg-red-50 rounded">
-          Error loading sports. Please try again later.
-        </div>
-      )}
-
       <SportCategoryList
         sportsCategory={data?.items}
         isLoading={isLoading}
         pagination={{
           pageNumber: page,
-          totalPages: data?.totalPages || 1,
-          onPageChange: handlePageChange,
+          totalPages: data?.totalPages ?? 1,
+          onPageChange: setPage,
         }}
-        handleEdit={(id: number) => {
-          // Handle edit logic here
-          alert("xxx");
-          console.log("Editing category with id:", id);
-        }}
+        handleEdit={(id: number) => router.push(`/sports-category/edit/${id}`)}
         handleDelete={handleDelete}
       />
 
-      {/* Sorting controls */}
       <div className="flex gap-4 items-center">
         <select
           value={filters.sortBy}
-          onChange={(e) => {
-            handleFilterChange({
-              ...filters,
-              sortBy: e.target.value,
-            });
-          }}
+          onChange={handleSortChange}
           className="border rounded p-2"
         >
           <option value="">Sort by</option>
@@ -133,19 +155,24 @@ export default function SportsCategoryPage() {
 
         <select
           value={filters.sortByValue}
-          onChange={(e) => {
-            handleFilterChange({
-              ...filters,
-              sortDescending: e.target.value !== "asc",
-              sortByValue: e.target.value as "asc" | "desc",
-            });
-          }}
+          onChange={handleSortDirectionChange}
           className="border rounded p-2"
         >
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
       </div>
+
+      <ConfirmModal
+        isOpen={modalState.isOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+        title="Delete Confirmation"
+        message="Are you sure you want to delete this item? This action cannot be undone."
+        type="danger"
+        confirmText="Delete"
+        cancelText="Cancel"
+      />
     </div>
   );
 }

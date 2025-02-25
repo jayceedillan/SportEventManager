@@ -43,7 +43,6 @@ export const handleApiError = (error: unknown): ApiError => {
 };
 
 export const get = async <T>(url: string): Promise<ApiResponse<T>> => {
-  debugger;
   try {
     const response = await api.get<ApiResponse<T>>(url);
     return response.data;

@@ -1,45 +1,46 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { SportForm } from "@/components/sports/SportForm";
+import { SportCategoryForm } from "@/components/sports-categories/SportCategoryForm";
 import {
-  useGetSportByIdQuery,
-  useUpdateSportMutation,
-} from "@/store/services/sportApi";
+  useGetSportCategoryByIdQuery,
+  useUpdateSportCategoryMutation,
+} from "@/store/services/sportCategoryApi";
 import { toast } from "react-hot-toast";
 import { Loading } from "@/components/common/Loading";
 
-export default function EditSportPage() {
+export default function EditSportCategoryPage() {
   const { id } = useParams();
   const router = useRouter();
-  const { data: sport, isLoading: isLoadingSport } = useGetSportByIdQuery(
-    Number(id)
-  );
-  const [updateSport, { isLoading: isUpdating }] = useUpdateSportMutation();
+  const { data: sportCategory, isLoading: isLoadingSportCategory } =
+    useGetSportCategoryByIdQuery(Number(id));
+  const [updateSportCategory, { isLoading: isUpdating }] =
+    useUpdateSportCategoryMutation();
 
-  if (isLoadingSport) {
+  if (isLoadingSportCategory) {
     return <Loading />;
   }
 
-  if (!sport) {
-    return <div>Sport not found</div>;
+  if (!sportCategory) {
+    return <div>Sport Category not found</div>;
   }
 
-  const handleSubmit = async (data: SportFormData) => {
+  const handleSubmit = async (body: SportCategoryFormData) => {
     try {
-      await updateSport({ id: Number(id), data }).unwrap();
-      toast.success("Sport updated successfully");
-      router.push("/events");
+      await updateSportCategory({ id: Number(id), body }).unwrap();
+      toast.success("Sport Category updated successfully");
+      router.push("/sports-category");
     } catch (error) {
-      toast.error("Failed to update sport");
+      toast.error("Failed to update sport Category");
     }
   };
 
   return (
     <div className="max-w-2xl mx-auto p-8">
       <h1 className="text-2xl font-bold mb-6">Edit Sport</h1>
-      <SportForm
-        initialData={sport}
+      {JSON.stringify(sportCategory)}
+      <SportCategoryForm
+        initialData={sportCategory}
         onSubmit={handleSubmit}
         isLoading={isUpdating}
       />

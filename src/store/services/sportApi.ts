@@ -51,7 +51,7 @@ export const sportApi = createApi({
             ]
           : [{ type: "Sport", id: "LIST" }],
     }),
-    getSportById: builder.query<Sport, string>({
+    getSportById: builder.query<Sport, number>({
       query: (id) => `sport/${id}`,
       providesTags: (_result, _error, id) => [{ type: "Sport", id }],
     }),

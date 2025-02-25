@@ -31,8 +31,6 @@ export const sportCategoryApi = createApi({
       PaginationFilterDto | void
     >({
       query: (params?: PaginationFilterDto) => {
-        console.log("Params received in getSportCategory:", params); // Debugging line
-        debugger;
         return {
           url: "sport-categories",
           params: {
@@ -55,7 +53,7 @@ export const sportCategoryApi = createApi({
             ]
           : [{ type: "SportCategory", id: "LIST" }],
     }),
-    getSportCategoryById: builder.query<SportCategory, string>({
+    getSportCategoryById: builder.query<SportCategory, number>({
       query: (id) => `sport-categories/${id}`,
       providesTags: (_result, _error, id) => [{ type: "SportCategory", id }],
     }),
@@ -64,8 +62,6 @@ export const sportCategoryApi = createApi({
       Partial<SportCategory>
     >({
       query: (body) => {
-        console.log("Creating Sport Category with body:", body); // Debugging line
-        debugger;
         return {
           url: "sport-categories",
           method: "POST",
@@ -76,13 +72,11 @@ export const sportCategoryApi = createApi({
     }),
     updateSportCategory: builder.mutation<
       SportCategory,
-      { id: string; body: Partial<SportCategory> }
+      { id: number; body: SportCategory }
     >({
-      query: ({ id, body }) => ({
-        url: `sport-categories/${id}`,
-        method: "PUT",
-        body,
-      }),
+      query: ({ id, body }) => {
+        return { url: `sport-categories/${id}`, method: "PUT", body };
+      },
       invalidatesTags: (_result, _error, { id }) => [
         { type: "SportCategory", id },
       ],
