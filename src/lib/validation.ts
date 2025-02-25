@@ -1,5 +1,9 @@
 import { z } from "zod";
-import { eventSchema, sportSchema } from "@/utils/validation";
+import {
+  eventSchema,
+  sportSchema,
+  sportCategorySchema,
+} from "@/utils/validation";
 
 export const validateFormData = <T>(
   schema: z.ZodSchema,
@@ -28,4 +32,4 @@ export const getValidationErrors = (
   return errors;
 };
 
-export { eventSchema, sportSchema };
+export { eventSchema, sportSchema, sportCategorySchema };

@@ -22,11 +22,10 @@ export const Button: React.FC<ButtonProps> = ({
       className={clsx(
         "inline-flex items-center justify-center rounded-md font-medium transition-colors",
         {
-          "bg-primary-600 text-white hover:bg-primary-700":
-            variant === "primary",
+          "bg-primary-600 hover:bg-primary-700": variant === "primary",
           "bg-secondary-600 text-white hover:bg-secondary-700":
             variant === "secondary",
-          "bg-red-600 text-white hover:bg-red-700": variant === "danger",
+          "bg-red-600  hover:bg-red-700": variant === "danger",
           "border-2 border-gray-300 text-gray-700 hover:bg-gray-50":
             variant === "outline",
           "px-3 py-1.5 text-sm": size === "sm",

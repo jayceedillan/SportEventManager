@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { SportList } from "@/components/sports/SportList";
-import { SportFilters } from "@/components/sports/SportFilters";
+import { SportCategoryList } from "@/components/sports-categories/SportCategoryList";
+import { SportCategoryFilters } from "@/components/sports-categories/SportCategoryFilters";
 import { Button } from "@/components/common/Button";
 import { useRouter } from "next/navigation";
 import { usePagination } from "@/hooks/usePagination";
 import {
-  useGetSportsQuery,
+  useGetSportCategoryQuery,
+  useDeleteSportCategoryMutation,
   PaginationFilterDto,
-} from "@/store/services/sportApi";
+} from "@/store/services/sportCategoryApi";
+import { toast } from "react-hot-toast";
 
-interface SportFilters {
+interface SportCategoryFilters {
   searchTerm: string;
   isActive: boolean;
   sortBy?: string;
@@ -19,9 +21,9 @@ interface SportFilters {
   sortByValue?: "asc" | "desc";
 }
 
-export default function SportsPage() {
+export default function SportsCategoryPage() {
   const router = useRouter();
-  const [filters, setFilters] = useState<SportFilters>({
+  const [filters, setFilters] = useState<SportCategoryFilters>({
     searchTerm: "",
     isActive: true,
     sortDescending: false,
@@ -39,11 +41,33 @@ export default function SportsPage() {
     sortDescending: filters.sortDescending,
   };
 
-  const { data, isLoading, error } = useGetSportsQuery(queryParams);
+  const { data, isLoading, error } = useGetSportCategoryQuery(queryParams);
+  const [deleteSportCategory] = useDeleteSportCategoryMutation();
 
-  const handleFilterChange = (newFilters: SportFilters) => {
+  const handleFilterChange = (newFilters: SportCategoryFilters) => {
     setFilters(newFilters);
     resetPagination();
+  };
+
+  const handleDelete = async (id: number) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this sport category?"
+    );
+
+    if (confirmed) {
+      // Show loading state
+      // if (isDeleting) return; // Prevent multiple clicks while deleting
+      debugger;
+      await deleteSportCategory(id).unwrap();
+
+      // Optional: Show success message
+      toast.success("Sport category deleted successfully");
+      // Or if you're not using toast library
+      // alert('Sport category deleted successfully');
+
+      // Optionally refresh the data or handle the UI update
+      // If you're using React Query or RTK Query, this might be handled automatically
+    }
   };
 
   const handlePageChange = (newPage: number) => {
@@ -53,17 +77,17 @@ export default function SportsPage() {
   return (
     <div className="space-y-6 p-8">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Sports</h1>
+        <h1 className="text-2xl font-bold">Sports Category</h1>
         <Button
-          onClick={() => router.push("/sports/create")}
+          onClick={() => router.push("/sports-category/create")}
           variant="primary"
           className="bg-cyan-500 text-white hover:!bg-blue-600"
         >
-          Create Sport
+          Create Sport Category
         </Button>
       </div>
 
-      <SportFilters
+      <SportCategoryFilters
         onFilterChange={handleFilterChange}
         currentFilters={filters}
       />
@@ -74,14 +98,20 @@ export default function SportsPage() {
         </div>
       )}
 
-      <SportList
-        sports={data?.items}
+      <SportCategoryList
+        sportsCategory={data?.items}
         isLoading={isLoading}
         pagination={{
-          currentPage: page,
+          pageNumber: page,
           totalPages: data?.totalPages || 1,
           onPageChange: handlePageChange,
         }}
+        handleEdit={(id: number) => {
+          // Handle edit logic here
+          alert("xxx");
+          console.log("Editing category with id:", id);
+        }}
+        handleDelete={handleDelete}
       />
 
       {/* Sorting controls */}
@@ -99,8 +129,6 @@ export default function SportsPage() {
           <option value="">Sort by</option>
           <option value="name">Name</option>
           <option value="Description">Description</option>
-          <option value="minPlayers">Min Players</option>
-          <option value="maxPlayers">Max Players</option>
         </select>
 
         <select

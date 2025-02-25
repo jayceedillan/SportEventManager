@@ -28,13 +28,21 @@ export const eventSchema = z
 
 export const sportSchema = z
   .object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    description: z
+    name: z
       .string()
-      .min(10, "Description must be at least 10 characters"),
-    rules: z.string().min(10, "Rules must be at least 10 characters"),
-    minPlayers: z.number().min(1, "Minimum 1 player required"),
-    maxPlayers: z.number().min(1, "Minimum 1 player required"),
+      .min(1, "Name is required")
+      .max(100, "Name cannot exceed 100 characters"),
+    description: z.string().min(1, "Description is required"),
+    rules: z
+      .string()
+      .min(1, "Rules are required")
+      .max(500, "Description cannot exceed 500 characters"),
+    minPlayers: z
+      .number({ invalid_type_error: "Minimum players must be a number" })
+      .min(1, "Minimum 1 player required"),
+    maxPlayers: z
+      .number({ invalid_type_error: "Maximum players must be a number" })
+      .min(1, "Minimum 1 player required"),
     isActive: z.boolean(),
     imageUrl: z.string().url().optional(),
   })
@@ -77,3 +85,12 @@ export const validatePassword = (
     errors,
   };
 };
+
+export const sportCategorySchema = z.object({
+  name: z
+    .string()
+    .min(1, "Name is required")
+    .max(100, "Name cannot exceed 100 characters"),
+  description: z.string().min(1, "Description is required"),
+  iconUrl: z.string().url().optional(),
+});

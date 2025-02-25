@@ -2,7 +2,7 @@ import axios from "axios";
 import { ApiResponse, ApiError } from "@/types/common";
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: "http://localhost:7221/api",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -43,6 +43,7 @@ export const handleApiError = (error: unknown): ApiError => {
 };
 
 export const get = async <T>(url: string): Promise<ApiResponse<T>> => {
+  debugger;
   try {
     const response = await api.get<ApiResponse<T>>(url);
     return response.data;

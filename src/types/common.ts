@@ -32,3 +32,11 @@ export interface TableColumn<T> {
   title: string;
   render?: (value: T[keyof T], item: T) => React.ReactNode;
 }
+
+export interface PaginationFilterDto {
+  pageNumber: number;
+  pageSize: number;
+  searchTerm?: string;
+  sortColumn?: string;
+  sortOrder?: "asc" | "desc";
+}

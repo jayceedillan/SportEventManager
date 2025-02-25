@@ -1,18 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Example of correct styling */
-body {
-  @apply bg-gray-100 text-gray-900; /* ✅ Ensure no missing semicolon */
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.container {
-  max-width: 1200px;
-}

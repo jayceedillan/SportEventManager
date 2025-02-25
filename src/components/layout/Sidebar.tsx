@@ -15,6 +15,7 @@ import clsx from "clsx";
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: FiHome },
   { name: "Events", href: "/events", icon: FiCalendar },
+  { name: "Sports Category", href: "/sports-category", icon: FiActivity },
   { name: "Sports", href: "/sports", icon: FiActivity },
   { name: "Users", href: "/users", icon: FiUsers },
   { name: "Settings", href: "/settings", icon: FiSettings },

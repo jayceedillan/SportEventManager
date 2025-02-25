@@ -1,55 +1,40 @@
-import { useDebounce } from "@/hooks/useDebounce";
-import { SearchInput } from "../common/SearchInput";
-import { Select } from "../common/Select";
-import { useState } from "react";
-
 interface SportFiltersProps {
-  onFilterChange: (filters: any) => void;
+  onFilterChange: (filters: SportFilters) => void;
+  currentFilters: SportFilters;
 }
 
-export const SportFilters: React.FC<SportFiltersProps> = ({
+export function SportFilters({
   onFilterChange,
-}) => {
-  const [search, setSearch] = useState("");
-  const debouncedSearch = useDebounce(search, 500);
-
-  const handleSearchChange = (value: string) => {
-    setSearch(value);
-  };
-
-  const handleStatusChange = (value: string) => {
-    onFilterChange((prev) => ({
-      ...prev,
-      isActive: value === "active",
-    }));
-  };
-
-  // Update filters when debounced search changes
-  React.useEffect(() => {
-    onFilterChange((prev) => ({
-      ...prev,
-      search: debouncedSearch,
-    }));
-  }, [debouncedSearch, onFilterChange]);
-
+  currentFilters,
+}: SportFiltersProps) {
   return (
-    <div className="flex space-x-4">
-      <SearchInput
-        value={search}
-        onChange={handleSearchChange}
+    <div className="flex gap-4 p-4 bg-white rounded shadow">
+      <input
+        type="text"
         placeholder="Search sports..."
-        className="w-64"
+        value={currentFilters.searchTerm}
+        onChange={(e) =>
+          onFilterChange({
+            ...currentFilters,
+            searchTerm: e.target.value,
+          })
+        }
+        className="border rounded p-2 flex-1"
       />
 
-      <Select
-        options={[
-          { value: "all", label: "All Status" },
-          { value: "active", label: "Active" },
-          { value: "inactive", label: "Inactive" },
-        ]}
-        onChange={handleStatusChange}
-        className="w-40"
-      />
+      <select
+        value={currentFilters.isActive ? "active" : "inactive"}
+        onChange={(e) =>
+          onFilterChange({
+            ...currentFilters,
+            isActive: e.target.value === "active",
+          })
+        }
+        className="border rounded p-2"
+      >
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
     </div>
   );
-};
+}

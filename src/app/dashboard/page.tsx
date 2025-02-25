@@ -1,5 +1,4 @@
 "use client";
-
 import { DashboardStats } from "@/components/dashboard/DashboardStats";
 import { RecentActivities } from "@/components/dashboard/RecentActivities";
 import { StatisticsChart } from "@/components/dashboard/StatisticsChart";
@@ -12,15 +11,15 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Dashboard</h1>
-
+      <h1 className="text-2xl font-bold">Dashboard ddd</h1>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <DashboardStats
         totalEvents={events?.totalCount || 0}
         totalSports={sports?.totalCount || 0}
         activeEvents={
-          events?.items.filter((e) => e.status === "Scheduled").length || 0
+          events?.items?.filter((e) => e.status === "Scheduled").length || 0
         }
-        activeSports={sports?.items.filter((s) => s.isActive).length || 0}
+        activeSports={sports?.items?.filter((s) => s.isActive).length || 0}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -4,21 +4,21 @@ import { Event } from "@/types/event";
 export const eventApi = createApi({
   reducerPath: "eventApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/api", // adjust this to your API base URL
+    baseUrl: "https://localhost:7221/api/v1", // adjust this to your API base URL
   }),
   tagTypes: ["Event"],
   endpoints: (builder) => ({
     getEvents: builder.query<Event[], void>({
-      query: () => "events",
+      query: () => "event",
       providesTags: ["Event"],
     }),
     getEventById: builder.query<Event, string>({
-      query: (id) => `events/${id}`,
+      query: (id) => `event/${id}`,
       providesTags: (_result, _error, id) => [{ type: "Event", id }],
     }),
     createEvent: builder.mutation<Event, Partial<Event>>({
       query: (body) => ({
-        url: "events",
+        url: "event",
         method: "POST",
         body,
       }),
@@ -26,7 +26,7 @@ export const eventApi = createApi({
     }),
     updateEvent: builder.mutation<Event, { id: string; body: Partial<Event> }>({
       query: ({ id, body }) => ({
-        url: `events/${id}`,
+        url: `event/${id}`,
         method: "PUT",
         body,
       }),
@@ -34,7 +34,7 @@ export const eventApi = createApi({
     }),
     deleteEvent: builder.mutation<void, string>({
       query: (id) => ({
-        url: `events/${id}`,
+        url: `event/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Event"],

@@ -1,3 +1,5 @@
+import { number } from "zod";
+
 export interface Sport {
   id: number;
   name: string;
@@ -5,6 +7,7 @@ export interface Sport {
   rules: string;
   minPlayers: number;
   maxPlayers: number;
+  categoryId: number;
   isActive: boolean;
   imageUrl?: string;
   createdAt: string;

@@ -1,16 +1,19 @@
 import { Sport } from "@/types/sport";
-import { SportCard } from "./SportCard";
 import { Pagination } from "../common/Pagination";
 import { Loading } from "../common/Loading";
+
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  pageSize: number;
+  onPageChange: (page: number) => void;
+}
 
 interface SportListProps {
   sports?: Sport[];
   isLoading: boolean;
-  pagination: {
-    currentPage: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
-  };
+  pagination: PaginationProps;
 }
 
 export const SportList: React.FC<SportListProps> = ({
@@ -30,9 +33,26 @@ export const SportList: React.FC<SportListProps> = ({
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-col space-y-4">
+        <div className="flex w-full font-semibold text-gray-600">
+          <div className="flex-1 p-2">Sport Name</div>
+          <div className="flex-1 p-2">Description</div>
+          <div className="flex-1 p-2">Rules</div>
+          <div className="flex-1 p-2">Min Players</div>
+          <div className="flex-1 p-2">Max Players</div>
+        </div>
+        {/* Mapping over the sports and displaying each as a row */}
         {sports.map((sport) => (
-          <SportCard key={sport.id} sport={sport} />
+          <div
+            key={sport.id}
+            className="flex w-full border-t border-gray-200 py-2"
+          >
+            <div className="flex-1 p-2">{sport.name}</div>
+            <div className="flex-1 p-2">{sport.description}</div>
+            <div className="flex-1 p-2">{sport.rules}</div>
+            <div className="flex-1 p-2">{sport.minPlayers}</div>
+            <div className="flex-1 p-2">{sport.maxPlayers}</div>
+          </div>
         ))}
       </div>
 

@@ -1,3 +1,4 @@
+// src/components/common/Pagination.tsx
 import { useMemo } from "react";
 import { Button } from "./Button";
 
@@ -7,11 +8,11 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
+export function Pagination({
   currentPage,
   totalPages,
   onPageChange,
-}) => {
+}: PaginationProps) {
   const pages = useMemo(() => {
     const items = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -61,4 +62,4 @@ export const Pagination: React.FC<PaginationProps> = ({
       </Button>
     </div>
   );
-};
+}
