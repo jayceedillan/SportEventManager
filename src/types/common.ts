@@ -51,3 +51,12 @@ export interface ConfirmModalProps {
   cancelText?: string;
   type?: "danger" | "warning" | "info";
 }
+
+export interface CommonFilters {
+  searchTerm: string;
+  isActive: boolean;
+  sortBy?: string;
+  sortDescending: boolean;
+  sortByValue?: "asc" | "desc";
+  sortedColumns?: { name: string; value?: string }[];
+}

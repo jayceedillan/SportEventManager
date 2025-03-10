@@ -1,5 +1,3 @@
-import { number } from "zod";
-
 export interface SportCategory {
   id: number;
   name: string;

@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Sport } from "@/types/sport";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export interface PaginationFilterDto {
   page?: number;
@@ -33,7 +33,7 @@ export const sportApi = createApi({
       query: (params?: PaginationFilterDto) => ({
         url: "sport",
         params: {
-          pageNumber: params?.pageNumber ?? 1,
+          pageNumber: params?.page ?? 1,
           pageSize: params?.pageSize ?? 10,
           searchTerm: params?.searchTerm,
           sortBy: params?.sortBy,
@@ -71,7 +71,7 @@ export const sportApi = createApi({
       }),
       invalidatesTags: (_result, _error, { id }) => [{ type: "Sport", id }],
     }),
-    deleteSport: builder.mutation<void, string>({
+    deleteSport: builder.mutation<void, number>({
       query: (id) => ({
         url: `sport/${id}`,
         method: "DELETE",

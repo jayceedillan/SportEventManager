@@ -1,9 +1,9 @@
 import { Sport } from "@/types/sport";
-import { Pagination } from "../common/Pagination";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Loading } from "../common/Loading";
-
+import { Pagination } from "../common/Pagination";
 interface PaginationProps {
-  currentPage: number;
+  pageNumber: number;
   totalPages: number;
   totalItems: number;
   pageSize: number;
@@ -14,12 +14,16 @@ interface SportListProps {
   sports?: Sport[];
   isLoading: boolean;
   pagination: PaginationProps;
+  handleDelete: (id: number) => void;
+  handleEdit: (id: number) => void;
 }
 
 export const SportList: React.FC<SportListProps> = ({
   sports,
   isLoading,
   pagination,
+  handleDelete,
+  handleEdit,
 }) => {
   if (isLoading) {
     return <Loading />;
@@ -52,12 +56,28 @@ export const SportList: React.FC<SportListProps> = ({
             <div className="flex-1 p-2">{sport.rules}</div>
             <div className="flex-1 p-2">{sport.minPlayers}</div>
             <div className="flex-1 p-2">{sport.maxPlayers}</div>
+            <div className="w-24 p-2 flex space-x-2">
+              <button
+                onClick={() => handleEdit(sport.id)}
+                className="p-1.5 text-blue-600 hover:text-blue-800 transition-colors"
+                title="Edit"
+              >
+                <FaEdit size={18} />
+              </button>
+              <button
+                onClick={() => handleDelete(sport.id)}
+                className="p-1.5 text-red-600 hover:text-red-800 transition-colors"
+                title="Delete"
+              >
+                <FaTrash size={18} />
+              </button>
+            </div>
           </div>
         ))}
       </div>
 
       <Pagination
-        currentPage={pagination.currentPage}
+        currentPage={pagination.pageNumber}
         totalPages={pagination.totalPages}
         onPageChange={pagination.onPageChange}
       />

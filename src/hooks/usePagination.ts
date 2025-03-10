@@ -1,5 +1,5 @@
+import { PaginationFilter } from "@/types/common/paginationFilter";
 import { useState } from "react";
-import { PaginationFilter } from "@/types/common";
 
 interface UsePaginationProps {
   initialPage?: number;

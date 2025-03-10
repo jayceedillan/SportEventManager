@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { SportCategory } from "@/types/sportCategory";
 import { sportCategorySchema } from "@/lib/validation";
-import { Input } from "../common/Input";
-import { Button } from "../common/Button";
-import { Textarea } from "../common/Textarea";
+import { Input } from "@/components/common/Input";
+import { Button } from "@/components/common/Button";
+import { Textarea } from "@/components/common/Textarea";
 
 type SportCategoryFormData = z.infer<typeof sportCategorySchema>;
 

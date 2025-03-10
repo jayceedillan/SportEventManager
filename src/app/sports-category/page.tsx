@@ -1,48 +1,24 @@
 "use client";
 
-import { useState } from "react";
-import { SportCategoryList } from "@/components/sports-categories/SportCategoryList";
-import { SportCategoryFilters } from "@/components/sports-categories/SportCategoryFilters";
 import { Button } from "@/components/common/Button";
-import { useRouter } from "next/navigation";
-import { usePagination } from "@/hooks/usePagination";
+import { ConfirmModal } from "@/components/common/ConfirmModal";
+import { SportCategoryFilters } from "@/components/sports-categories/SportCategoryFilters";
+import { SportCategoryList } from "@/components/sports-categories/SportCategoryList";
+import { useFilters } from "@/hooks/useFilters"; // Ensure this exists
+import { useModalState } from "@/hooks/useModalState";
 import {
-  useGetSportCategoryQuery,
   useDeleteSportCategoryMutation,
+  useGetSportCategoryQuery,
   type PaginationFilterDto,
 } from "@/store/services/sportCategoryApi";
-import { toast } from "react-hot-toast";
-import { ConfirmModal } from "@/components/common/ConfirmModal";
 import { showToast } from "@/utils/toast";
-
-interface SportCategoryFilters {
-  searchTerm: string;
-  isActive: boolean;
-  sortBy?: string;
-  sortDescending: boolean;
-  sortByValue?: "asc" | "desc";
-}
-
-interface ModalState {
-  isOpen: boolean;
-  itemId: number | null;
-}
-
-const initialFilters: SportCategoryFilters = {
-  searchTerm: "",
-  isActive: true,
-  sortDescending: false,
-};
+import { useRouter } from "next/navigation";
 
 export default function SportsCategoryPage() {
   const router = useRouter();
-  const [filters, setFilters] = useState<SportCategoryFilters>(initialFilters);
-  const [modalState, setModalState] = useState<ModalState>({
-    isOpen: false,
-    itemId: null,
-  });
 
-  const { page, pageSize, setPage, resetPagination } = usePagination();
+  const { filters, page, pageSize, setPage, handleFilterChange } = useFilters();
+  const { modalState, openModal, closeModal } = useModalState();
 
   const queryParams: PaginationFilterDto = {
     page,
@@ -55,14 +31,7 @@ export default function SportsCategoryPage() {
   const { data, isLoading, error } = useGetSportCategoryQuery(queryParams);
   const [deleteSportCategory] = useDeleteSportCategoryMutation();
 
-  const handleFilterChange = (newFilters: SportCategoryFilters) => {
-    setFilters(newFilters);
-    resetPagination();
-  };
-
-  const handleDelete = (id: number) => {
-    setModalState({ isOpen: true, itemId: id });
-  };
+  const handleDelete = (id: number) => openModal(id);
 
   const handleConfirm = async () => {
     if (!modalState.itemId) return;
@@ -71,20 +40,14 @@ export default function SportsCategoryPage() {
 
     try {
       await deleteSportCategory(modalState.itemId).unwrap();
-      debugger;
-      showToast.dismiss(loadingToastId);
       showToast.success("Sport category deleted successfully");
     } catch (error) {
       showToast.dismiss(loadingToastId);
       showToast.error("Failed to delete sport category");
       console.error("Delete error:", error);
     } finally {
-      setModalState({ isOpen: false, itemId: null });
+      closeModal();
     }
-  };
-
-  const handleCloseModal = () => {
-    setModalState({ isOpen: false, itemId: null });
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -165,7 +128,7 @@ export default function SportsCategoryPage() {
 
       <ConfirmModal
         isOpen={modalState.isOpen}
-        onClose={handleCloseModal}
+        onClose={closeModal}
         onConfirm={handleConfirm}
         title="Delete Confirmation"
         message="Are you sure you want to delete this item? This action cannot be undone."
